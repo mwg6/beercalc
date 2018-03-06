@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -64,5 +66,44 @@ public class beerTable extends JPanel{
 		   }
 		   System.out.println(total);
 		   return total;
+	   }
+	   public String getGrainNames(){
+ 		  List<String> grainNames = new ArrayList<String>();
+ 		  int i =0;
+ 		  while(i<table.getRowCount()){
+			   if(table.getValueAt(i, 1).equals("Grain")){
+
+			   grainNames.add(table.getValueAt(i, 0).toString());
+			   i++;
+
+				   
+			   }
+			   else {
+				   i++;
+			   }
+ 		  }
+ 		 return grainNames.toString();
+ 		  
+	   }
+	   public String getHopNames(){
+	 		  List<String> hopNames = new ArrayList<String>();
+	 		  int i =0;
+	 		  while(i<table.getRowCount()){
+				   if(table.getValueAt(i, 1).equals("Hops")){
+
+				   hopNames.add(table.getValueAt(i, 0).toString());
+				   i++;
+
+					   
+				   }
+				   else {
+					   i++;
+				   }
+	 		  }
+	 		 return hopNames.toString();
+	 		  
+		   }
+	   public void clearTable(){
+		   model.setRowCount(0);
 	   }
 }

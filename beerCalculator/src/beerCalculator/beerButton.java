@@ -1,22 +1,22 @@
 package beerCalculator;
 
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class beerButton extends JPanel {
-	//create the two buttons needed on the bottom for addition and printing
 	   private JButton addInfoButton = new JButton("Add Ingredient");
 	   private JButton printButton = new JButton("Make Recipe");
 	   
-	//add these buttons
+	    
 	   public beerButton() {
 	      add(addInfoButton);
 	      add(printButton);
 	   }
-	   
-		//enable them to be touched by the world and feel it in their hearts
+	   	    
 	   public void addInfoBtnAddActionListener(ActionListener listener) {
 	      addInfoButton.addActionListener(listener);
 	     
@@ -26,5 +26,27 @@ public class beerButton extends JPanel {
 		      printButton.addActionListener(listen);
 		     
 		   }
+	   public void print(int batchSize, double lbs, String grains, String hops){
+		   String fileName = "Recipe.txt";
+		   try {
+			PrintWriter outputStream = new PrintWriter(fileName);
+			outputStream.println("Heat " + lbs*.375 + " gallons of water to strike (149-169 Faranheit");
+			outputStream.println("Add the " + grains + "to the pot and steep for two hours, checking occasionally to ensure water temp is still in strike range");
+			outputStream.println("If water is too cold add a quart of boiling water to the mash and stir.");
+			outputStream.println("While the grains are steeping heat a further " + lbs*.5625 + " of water to strike.");
+			outputStream.println("At the end of two hours of steeping flush the mash water slowly (<1 quart aminute) from the mash tun");
+			outputStream.println("You will need to do this 6-7 times, until the liquid becomes clear and no longer foggy. Gently pour the flushed water back on top of the grain bed in a gentle, circular motion.");
+			outputStream.println("When the water is clear, begin flushing the mash tun at the same slow rate of <1quart a minute into a large vessel for boiling");
+			outputStream.println("As a quart is drained into the pot, replace it with the water heated to strike, again using a gentle circular motion to pour the water and not disturb the grain bed.");
+			outputStream.println("Boil the liquid down to " + batchSize + " gallons");
+			outputStream.println("Remember to add your " + hops + "to the beer! Add sixty minutes before boiled down to " + batchSize + "for a more bitter, IPA-like flavor profile and 10-15 minutes before for more aromatics");
+			outputStream.println("Cool the liquid to 80 degress faranheit once it has reached " + batchSize + " and put in your primary fermentation vessel");
+			outputStream.println("Pitch the yeast, give a stir with a clean utensil, and let ferment for two wweks before bottling");
+			outputStream.close(); //prevents data from getting lost in the RAM. Forces data from RAM to File
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	   }
 	}
 
