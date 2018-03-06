@@ -19,7 +19,7 @@ public class beerCalc {
 		      //self evident
 		      frame.setVisible(true);
 		   }
-		 
+		 //below is the main method, which supervises the rest of the thing doing actual work
 		   public static void main(String[] args) {
 		      java.awt.EventQueue.invokeLater(new Runnable() {
 		         public void run() {
