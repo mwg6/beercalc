@@ -15,17 +15,18 @@ import javax.swing.table.TableModel;
 
 public class beerTable extends JPanel{
 	
+	//We make the column headers here, and create a JTable with no initial rows
 	   private String[] COLUMNS = {"Name", "Type", "Quantity", "Units" };
 	   private DefaultTableModel model = new DefaultTableModel(COLUMNS, 0);
 	   private JTable table = new JTable(model);
-	   public int fileCount = 0;
 	  
-	   
+	   //add our table within a scroll pane
 	   public beerTable() {
 	      setLayout(new BorderLayout());
 	      add(new JScrollPane(table));
 	   }
 	    
+	//method for adding a row. adds an array containing passed objects from user input
 	   public void addRow(String name, String type, double quantity, String units) {
 	      Object[] row = new Object[4];
 	      row[0] = name;
@@ -34,12 +35,13 @@ public class beerTable extends JPanel{
 	      row[3] = units;
 	      model.addRow(row);
 	   }
-	   public int getFileCount(){
-		   return fileCount;
-	   }
+	
+	//not sure if this is still used
 	   public JTable getJTable(){
 		   return table;
 	   }
+	
+	// necessary for converting grain to lbs regardless of unit and returning the total of grain in pounds
 	   public double sumColumn(int column){
 		   int i =0;
 		   double total = 0;
@@ -64,9 +66,11 @@ public class beerTable extends JPanel{
 				   i++;
 			   }
 		   }
-		   System.out.println(total);
+
 		   return total;
 	   }
+	
+	//makes a string of the names of all grains in the recipe
 	   public String getGrainNames(){
  		  List<String> grainNames = new ArrayList<String>();
  		  int i =0;
@@ -85,6 +89,8 @@ public class beerTable extends JPanel{
  		 return grainNames.toString();
  		  
 	   }
+	
+	//makes a string of all hops in the recipe
 	   public String getHopNames(){
 	 		  List<String> hopNames = new ArrayList<String>();
 	 		  int i =0;
@@ -103,6 +109,8 @@ public class beerTable extends JPanel{
 	 		 return hopNames.toString();
 	 		  
 		   }
+	
+	//destroys your work
 	   public void clearTable(){
 		   model.setRowCount(0);
 	   }
