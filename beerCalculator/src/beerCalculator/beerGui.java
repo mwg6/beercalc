@@ -10,19 +10,24 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-//our class beergui adds functionality to JPanel
+//our class beergui adds functionality to JPanel (extends)
 public class beerGui extends JPanel{
+	
+	//first create the fields for the program. We need objects from other classes for this mess to work so make them
 	   beerTable beerTable = new beerTable();
 	   beerButton buttonPanel = new beerButton(); 
 	   beerPanel informationPanel = new beerPanel();
-	   String fileName = "recipe";
 	 
+	//now the constructor
 	   public beerGui() {
+		   //a beerGui will have a JPanel to hold the buttons from buttonPanel at the bottom. It will also 
+		   //hold the information panel and make them spaced out
 	      JPanel bottomPanel = new JPanel();
 	      bottomPanel.add(buttonPanel);
 	      bottomPanel.add(Box.createHorizontalStrut(10));
 	      bottomPanel.add(informationPanel);
 	       
+		   
 	      setLayout(new BorderLayout());
 	      add(beerTable, BorderLayout.CENTER);
 	      add(bottomPanel, BorderLayout.SOUTH);
