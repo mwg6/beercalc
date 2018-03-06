@@ -17,7 +17,7 @@ public class beerPanel extends JPanel{
 		   private JComboBox unit = new JComboBox(unitOptions);
 		    
 		   public beerPanel() {
-			   //create the column headings and add them to the panel
+			   //create the user input labels and adds them to the panel
 		      add(new JLabel("Name"));
 		      add(name);
 		      add(Box.createHorizontalStrut(10));
