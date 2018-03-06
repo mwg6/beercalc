@@ -7,14 +7,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class beerPanel extends JPanel{
+	//generate the restricted options list for columns that need it
 			String[] typeOptions = {"Grain","Hops","Other"};
 			String[] unitOptions = {"lb.","oz.", "kg.", "g."};
+	//allow or restrict user input
 		   private JTextField name = new JTextField(10);
 		   private JComboBox type = new JComboBox(typeOptions);
 		   private JTextField quantity = new JTextField(10);
 		   private JComboBox unit = new JComboBox(unitOptions);
 		    
 		   public beerPanel() {
+			   //create the column headings and add them to the panel
 		      add(new JLabel("Name"));
 		      add(name);
 		      add(Box.createHorizontalStrut(10));
@@ -26,7 +29,7 @@ public class beerPanel extends JPanel{
 		      add(new JLabel("Unit"));
 		      add(unit);
 		   }
-		    
+		    //useful methods for getting user data to add to the table
 		   public String Name() {
 		      return name.getText();
 		   }
